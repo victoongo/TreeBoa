@@ -294,3 +294,200 @@ for line in fh:
         print words[1]
         count = count + 1
 print "There were", count, "lines in the file with From as the first word"
+
+
+## Week 9
+# Lecture: dictionaries
+purse = dict()
+purse['money'] = 12
+purse['candy'] = 3
+print purse
+print purse['candy']
+purse['candy'] = purse['candy'] + 2
+print purse
+
+lst = list()
+lst.append(21)
+lst.append(123)
+print lst
+lst[0] = 23
+print lst
+
+ddd = dict()
+ddd['age'] = 21
+ddd['course'] = 182
+print ddd
+ddd['age'] = 23
+print ddd
+
+jjj = {'chuck':1, 'fred':42, 'jan':100} # no order
+print jjj
+ooo = {}
+print ooo
+
+ccc = dict()
+print ccc['csev']
+
+print 'csev' in ccc
+
+counts = dict()
+names = ['csev','cwen','csev','zqian','cwen']
+for name in names:
+    if name not in counts:
+        counts[name] = 1
+    else:
+        counts[name] = counts[name] + 1
+print counts
+
+if name in counts:
+    print counts[name]
+else:
+    print 0
+    
+print counts.get(name,0)
+
+counts = dict()
+names = ['csev','cwen','csev','zqian','cwen']
+for name in names:
+    counts[name] = counts.get(name,0) + 1
+print counts
+
+counts = dict()
+print 'Enter a line of text:'
+line = raw_input('')
+words = line.split()
+print 'Words:',words
+print 'Counting...'
+for word in words:
+    counts[word] = counts.get(word,0) + 1
+print 'Counts',counts
+for key in counts:
+    print key, counts[key]
+print list(counts)
+print counts.keys()
+print counts.values()
+print counts.items()
+for aaa,bbb in counts.items():
+    print aaa,bbb
+
+import os
+os.getcwd()
+os.chdir('/home/victor/Projects/TreeBoa/informatics/')
+#name = raw_input("Enter file:")
+#handle = open(name,'r')
+handle = open('mbox-short.txt','r')
+text = handle.read()
+words = text.split()
+counts = dict()
+for word in words:
+    counts[word] = counts.get(word,0) + 1 
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count > bigcount:
+        bigword = word
+        bigcount = count
+
+print bigword,bigcount
+
+# 9.4 Write a program to read through the mbox-short.txt and figure out who 
+# has the sent the greatest number of mail messages. The program looks for 
+# 'From ' lines and takes the second word of those lines as the person who sent 
+# the mail. The program creates a Python dictionary that maps the sender's mail 
+# address to a count of the number of times they appear in the file. After the 
+# dictionary is produced, the program reads through the dictionary using a 
+# maximum loop to find the most prolific committer.
+name = 'mbox-short.txt'
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+counts = dict()
+for line in handle:
+    if line.startswith('From '):
+        words = line.split()
+        word = words[1]
+        print word
+        counts[word] = counts.get(word,0) + 1 
+
+bigcount = None
+bigword = None
+for word,count in counts.items():
+    if bigcount is None or count > bigcount:
+        bigword = word
+        bigcount = count
+
+print bigword,bigcount
+
+
+## Week 10
+# Lecture tuples (like lists but with paramphasis rather than square brackets)
+l  = list()
+dir(l)
+t = tuple()
+dir(t)
+(x, y) = (4, 'fred')
+print y
+(a, b) = (99, 98)
+print a
+a, b = (99, 98)
+d = dict()
+d['csev'] = 2
+d['cwen'] = 4
+for (k,v) in d.items():
+    print k, v
+tups = d.items()
+print tups
+(0, 1, 3434) < (0, 3, 4)
+
+d = {'a':10, 'b':1, 'c':22}
+t = d.items()
+t
+t.sort()
+t
+t = sorted(d.items())
+t
+for k, v in sorted(d.items()):
+    print k, v
+    
+tmp = list()
+for k,v in d.items():
+    tmp.append((v,k))
+print tmp
+tmp.sort(reverse=True)
+print tmp
+print sorted([(v,k) for k,v in d.items()])
+
+fhand = open('romeo.txt')
+counts = dict()
+for line in fhand:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+lst = list()
+for k,v in counts.items():
+    lst.append((v,k))
+lst.sort(reverse=True)
+for v,k in lst[:10]:
+    print k,v
+
+# 10.2 Write a program to read through the mbox-short.txt and figure out the 
+# distribution by hour of the day for each of the messages. You can pull the hour 
+# out from the 'From ' line by finding the time and then splitting the string 
+# a second time using a colon.
+# From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+# Once you have accumulated the counts for each hour, print out the counts, 
+# sorted by hour as shown below. Note that the autograder does not have support 
+# for the sorted() function.
+#name = raw_input("Enter file:")
+name = 'mbox-short.txt'
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+counts = dict()
+for line in handle:
+    if line.startswith('From '):
+        words = line.split(':')
+        word = words[0][len(words[0])-2:len(words[0])]
+        counts[word] = counts.get(word,0) + 1
+lst = counts.items()
+lst.sort()
+for k,v in lst:
+    print k,v
