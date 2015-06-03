@@ -9,6 +9,7 @@
 get_ipython().magic(u'pylab inline')
 import pandas as pd
 
+cd "~/Dropbox/Projects/TreeBoa/pandas/data"
 car_eval = pd.read_csv('car_data.txt')
 car_eval.head()
 

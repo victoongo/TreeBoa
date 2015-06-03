@@ -6,6 +6,7 @@
 import pandas as pd
 from sklearn.cross_validation import train_test_split
 
+cd "~/Dropbox/Projects/TreeBoa/sklearn/data/"
 data = pd.read_csv('household_power_consumption.txt', delimiter=';')
 power_consumption = data.iloc[0:, 2:9].dropna()
 pc_toarray = power_consumption.values
