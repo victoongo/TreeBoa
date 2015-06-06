@@ -2,6 +2,16 @@
 """
 Created on Fri Jun  5 14:27:13 2015
 
+Special Pythagorean triplet
+Problem 9
+A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+a2 + b2 = c2
+For example, 32 + 42 = 9 + 16 = 25 = 52.
+
+There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+Find the product abc.
+
 @author: victor
 """
 
@@ -34,5 +44,4 @@ print find_pythagorean_triplet(12)
 print find_pythagorean_triplet(1000)
 
 print is_pythagorean_triplet(200, 375, 425)
-
-
+print 200 * 375 * 425

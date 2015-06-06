@@ -71,7 +71,9 @@ def nth_prime_fast(n):
             test_prime += 2
         return primes[-1]             
     
-for i in range(1, 117):
+for i in range(1, 100):
     print nth_prime_fast(i)
+
+print nth_prime_fast(10001)
     
 # the baseline is working
