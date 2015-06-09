@@ -30,4 +30,35 @@ def even_fibonacci_numbers(ceiling):
     return even_fibonacci
     
 print even_fibonacci_numbers(100)
+print sum(even_fibonacci_numbers(100))
 print sum(even_fibonacci_numbers(4000000))
+
+
+def even_fibonacci_numbers2(ceiling):
+    a = 1
+    b = 2
+    sum = 0
+    while b < ceiling:
+        if b % 2 == 0:
+            sum += b
+        h = a + b
+        a = b
+        b = h
+    return sum
+print even_fibonacci_numbers2(100)
+print even_fibonacci_numbers2(4000000)
+
+
+def even_fibonacci_numbers3(ceiling):
+    a = 1
+    b = 1
+    c = a + b
+    sum = 0
+    while c < ceiling:
+        sum += c
+        a = b + c
+        b = a + c
+        c = a + b
+    return sum
+print even_fibonacci_numbers3(100)
+print even_fibonacci_numbers3(4000000)
