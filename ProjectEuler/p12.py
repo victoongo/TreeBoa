@@ -26,16 +26,21 @@ What is the value of the first triangle number to have over five hundred divisor
 @author: victor
 """
 
+import math
+
 def count_divisor(num):
-    p_list = [2, 3]
-    while num != p_list[-1]:
-        #print num, p_list[-1]
-        if num % p_list[-1] == 0:
-            num /= p_list[-1]
-        else:
-            p_list = next_prime(p_list)
-    return p_list[-1]
-print largest_prime_factor(13195)
+    f_list = []
+    sqrt_num = math.sqrt(num)
+    divisor = 1
+    #print f_list, sqrt_num
+    while divisor <= sqrt_num:
+        #print divisor, f_list
+        if num % divisor == 0:
+            divisor2 = num / divisor
+            f_list.extend([divisor, divisor2])
+        divisor += 1
+    return len(f_list)
+print count_divisor(28)
 
 def hi_divisible_tri_num(divisor_num):
     num = 1
