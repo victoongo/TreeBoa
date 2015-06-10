@@ -33,14 +33,31 @@ def count_divisor(num):
     sqrt_num = math.sqrt(num)
     divisor = 1
     #print f_list, sqrt_num
-    while divisor <= sqrt_num:
+    while divisor < sqrt_num:
         #print divisor, f_list
         if num % divisor == 0:
             divisor2 = num / divisor
             f_list.extend([divisor, divisor2])
         divisor += 1
+    if num == divisor ** 2:
+        f_list.append(divisor)
     return len(f_list)
 print count_divisor(28)
+
+def count_divisor2(num):
+    count = 0
+    sqrt_num = math.sqrt(num)
+    divisor = 1
+    #print f_list, sqrt_num
+    while divisor < sqrt_num:
+        #print divisor, f_list
+        if num % divisor == 0:
+            count += 2            
+        divisor += 1
+    if num == divisor ** 2:
+        count += 1
+    return count
+print count_divisor2(28)
 
 def hi_divisible_tri_num(divisor_num):
     num = 1
@@ -49,7 +66,7 @@ def hi_divisible_tri_num(divisor_num):
     while divisor_count <= 500:
         tri_num += num
         num += 1
-        divisor_count = count_divisor(tri_num)
+        divisor_count = count_divisor2(tri_num)
     return tri_num
 print hi_divisible_tri_num(500)
 
