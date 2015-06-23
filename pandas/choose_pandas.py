@@ -16,9 +16,9 @@ car_eval.head()
 
 # In[2]:
 
-pivoted_car = car_eval.pivot_table(values='doors', 
-                                   rows='lug_boot', 
-                                   cols='class', 
+pivoted_car = car_eval.pivot_table(values='doors',
+                                   index='lug_boot',
+                                   columns='class',
                                    aggfunc='mean')
 pivoted_car
 
