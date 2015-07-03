@@ -47,8 +47,8 @@ def amicable(ceiling):
             if sum_of_divisors < ceiling and reverse_sum == n:
                 amicables.extend([n, sum_of_divisors])
         n += 1
-    print amicables
-    amicables = set(amicables)
+#    print amicables
+    amicables = list(set(amicables))
     return sum(amicables), amicables
 
 print amicable(10000)#[0]

@@ -2,130 +2,73 @@
 # coding: utf-8
 
 # In[1]:
-
-get_ipython().magic(u'matplotlib inline')
+import os
+#get_ipython().magic(u'matplotlib inline')
 import pandas as pd
-
+os.chdir('/home/victor/Dropbox/Projects/TreeBoa/pandas/pycon')
 
 # In[2]:
-
-from IPython.core.display import HTML
-css = open('style-table.css').read() + open('style-notebook.css').read()
-HTML('<style>{}</style>'.format(css))
+#from IPython.core.display import HTML
+#css = open('style-table.css').read() + open('style-notebook.css').read()
+#HTML('<style>{}</style>'.format(css))
 
 
 # In[3]:
-
 titles = pd.DataFrame.from_csv('data/titles.csv', index_col=None)
 titles.head()
 
-
 # In[4]:
-
 cast = pd.DataFrame.from_csv('data/cast.csv', index_col=None)
 cast.head()
-
 
 # ### How many movies are listed in the titles dataframe?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+len(titles.title)
+len(titles)
 
 # ### What are the earliest two films listed in the titles dataframe?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+titles.sort(['year']).head(2)
 
 # ### How many movies have the title "Hamlet"?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+len(titles[titles.title == "Hamlet"])
 
 # ### How many movies are titled "North by Northwest"?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+len(titles[titles.title == "North by Northwest"])
 
 # ### When was the first movie titled "Hamlet" made?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
+titles[titles.title == "Hamlet"].sort('year').head(1)
 
 
 # ### List all of the "Treasure Island" movies from earliest to most recent.
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+titles[titles.title == "Treasure Island"].sort('year')
 
 # ### How many movies were made in the year 1950?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+len(titles[titles.year == 1950])
 
 # ### How many movies were made in the year 1960?
 
 # In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
+len(titles[titles.year == 1960])
 
 # ### How many movies were made from 1950 through 1959?
 
 # In[ ]:
-
+len(titles[titles.year // 10 == 195])
+len(titles[(titles.year >= 1950) & (titles.year <= 1959)]) # and doesn't work
+titles.year in range(1950, 1960)
 
 
 
