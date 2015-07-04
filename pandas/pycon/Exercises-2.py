@@ -18,12 +18,10 @@ os.chdir('/home/victor/Dropbox/Projects/TreeBoa/pandas/pycon')
 titles = pd.DataFrame.from_csv('data/titles.csv', index_col=None)
 titles.head()
 
-
 # In[4]:
 
 cast = pd.DataFrame.from_csv('data/cast.csv', index_col=None)
 cast.head()
-
 
 # ### What are the ten most common movie names of all time?
 
