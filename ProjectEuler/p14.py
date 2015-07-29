@@ -26,25 +26,37 @@ def terms_collatz(num):
     while num != 1:
         if num % 2 == 0:
             num /= 2
-            terms += 1
         else:
             num = 3 * num + 1
-            terms += 1
+        terms += 1
     return terms
 print terms_collatz(13)
 
+def collatz(num):
+    """
+    recursive function to impliment collatz
+    """
+    if num != 1:
+        if num % 2 == 0:
+            #print num
+            return collatz(num / 2)
+        else:
+            return collatz(3 * num + 1)
+    else:
+        return 1
+print collatz(1300)
+
 def longest_collatz(ceiling):
-    start_num = 1
+    num = 1
     max_num = 1
     max_terms = 0
-    while start_num < ceiling:
-        num = start_num
+    while num < ceiling:
         terms = terms_collatz(num)
         #print num, terms
         if terms > max_terms:
             max_num = num
             max_terms = terms
-        start_num += 1
+        num += 1
     return max_num
 print longest_collatz(1000000)
 
