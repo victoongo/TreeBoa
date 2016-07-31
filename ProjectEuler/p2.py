@@ -76,3 +76,21 @@ def fib(num):
         return fib(num - 1) + fib(num - 2)
 for i in range(15):
     print fib(i)
+
+
+def memoized_fib(num, memo_dict):
+    global c
+    if num in memo_dict:
+        return memo_dict[num]
+    else:
+        sum1 = memoized_fib(num - 1, memo_dict)
+        sum2 = memoized_fib(num - 2, memo_dict)
+        memo_dict[num] = sum1 + sum2
+        c += 1
+        return sum1 + sum2
+for i in range(15):
+    print memoized_fib(i, {0:0, 1:1})
+
+c = 0
+memoized_fib(100, {0:0, 1:1})
+print c # n - 1 calls to the memoized fib was made in the memoized recursive fib function
